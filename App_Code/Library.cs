@@ -90,14 +90,15 @@ public class Library : System.Web.Services.WebService
         XElement catalogElement = document.Element("catalog");
         if (catalogElement != null)
         {
-            XElement bookElement = new XElement("book");
+            var bookElement = new XElement("book");
             bookElement.SetAttributeValue("id", book.id);
-            bookElement.Add("author", book.author);
-            bookElement.Add("title", book.title);
-            bookElement.Add("genre", book.genre);
-            bookElement.Add("price", book.price);
-            bookElement.Add("publish_date", book.publish_date);
-            bookElement.Add("description", book.description);
+            bookElement.SetElementValue("author", book.author);
+            bookElement.SetElementValue("title", book.title);
+            bookElement.SetElementValue("genre", book.genre);
+            bookElement.SetElementValue("price", book.price);
+            bookElement.SetElementValue("publish_date", book.publish_date);
+            bookElement.SetElementValue("description", book.description);
+
             catalogElement.Add(bookElement);
             document.Save(path);
         }
